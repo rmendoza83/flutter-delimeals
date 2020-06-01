@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import './categories_page.dart';
+import './pages/categories_page.dart';
+import './pages/category_meals_page.dart';
+import './pages/meal_detail_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,12 +26,18 @@ class MyApp extends StatelessWidget {
           ),
           title: TextStyle(
             fontSize: 20,
-            fontFamily: 'RobotoCondensed',
+            fontFamily: 'RobotoCondensed', 
             fontWeight: FontWeight.bold,
           ),
         ),
       ),
-      home: CategoriesPage(),
+      //home: CategoriesPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (ctx) => CategoriesPage(),
+        CategoryMealsPage.routeName: (ctx) => CategoryMealsPage(),
+        MealDetailPage.routeName: (ctx) => MealDetailPage()
+      }
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import './category_item.dart';
+import './../widgets/category_item.dart';
 
-import './dummy_data.dart';
+import './../dummy_data.dart';
 
 class CategoriesPage extends StatelessWidget {
   @override
@@ -13,7 +13,7 @@ class CategoriesPage extends StatelessWidget {
       ),
       body: GridView(
         padding: EdgeInsets.all(20),
-        children: DUMMY_CATEGORIES.map((catData) => CategoryItem(catData.title, catData.color)).toList(),
+        children: DUMMY_CATEGORIES.map((catData) => CategoryItem(catData.id, catData.title, catData.color)).toList(),
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 200,
           childAspectRatio: 3 / 2,
