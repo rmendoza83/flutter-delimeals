@@ -4,24 +4,37 @@ import './categories_page.dart';
 import './favorites_page.dart';
 import './../widgets/main_drawer.dart';
 
+import './../models/meal.dart';
+
 class TabsPage extends StatefulWidget {
+  final List<Meal> favoriteMeals;
+
+  TabsPage(
+    this.favoriteMeals
+  );
+
   @override
   _TabsPageState createState() => _TabsPageState();
 }
 
 class _TabsPageState extends State<TabsPage> {
-  final List<Map<String, Object>> _pages = [
-    {
-      'page': CategoriesPage(),
-      'title': 'Categories'
-    },
-    {
-      'page': FavoritesPage(),
-      'title': 'Your Favorites'
-    }
-  ];
+  List<Map<String, Object>> _pages;
   int _selectedPageIndex = 0;
 
+  @override
+  void initState() {
+    _pages = [
+      {
+        'page': CategoriesPage(),
+        'title': 'Categories'
+      },
+      {
+        'page': FavoritesPage(widget.favoriteMeals),
+        'title': 'Your Favorites'
+      }
+    ];
+    super.initState();
+  }
   void _selectPage(int index) {
     setState(() {
       _selectedPageIndex = index;

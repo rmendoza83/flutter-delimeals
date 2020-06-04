@@ -4,6 +4,14 @@ import 'package:flutter/material.dart';
 class MealDetailPage extends StatelessWidget {
   static const routeName = '/meal-detail';
 
+  final Function toogleFavorite;
+  final Function isFavorite;
+
+  MealDetailPage(
+    this.toogleFavorite,
+    this.isFavorite,
+  );
+
   Widget buildSectionTitle(BuildContext context, String title) {
     return Container(
       margin: EdgeInsets.symmetric(
@@ -90,11 +98,9 @@ class MealDetailPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(
-          Icons.delete
+          isFavorite(mealId) ? Icons.star : Icons.star_border
         ),
-        onPressed: () {
-          Navigator.of(context).pop(mealId);
-        },
+        onPressed: () => toogleFavorite(mealId),
       ),
     );
   }
